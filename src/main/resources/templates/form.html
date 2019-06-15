@@ -1,0 +1,41 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<style type="text/css">
+.container {
+	margin: 20px;
+}
+
+.message {
+	color: green;
+}
+
+.error {
+	color: red;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div th:if="${message}" class="message">
+			<h2 th:text="${message}">Successful!</h2>
+		</div>
+		<form action="#" th:action="@{/}" th:object="${creditCardReqDto}"
+			method="post">
+			<table>
+				<tr>
+					<td th:text="#{label.credit-card-number}">Credit Card Number:</td>
+					<td><input type="text" th:field="*{creditCardNumber}" /></td>
+					<td th:if="${#fields.hasErrors('creditCardNumber')}"
+						th:errors="*{creditCardNumber}" class="error">Card Number is
+						invalid!</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><button type="submit" th:text="#{label.submit}">Submit</button>
+						<button type="reset" th:text="#{label.reset}">Reset</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

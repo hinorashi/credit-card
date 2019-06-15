@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hino.credit_card.dto.CreditCardReqDto;
 
 @RestController
-@RequestMapping(path = "validation", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-public class ValidationController {
+@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+public class RestValidationController {
 
   @PostMapping
-  public ResponseEntity<?> validate(@Valid @RequestBody CreditCardReqDto reqDto) {
+  public ResponseEntity<?> validation(@Valid @RequestBody CreditCardReqDto reqDto) {
     return ResponseEntity.ok().build();
   }
 }
